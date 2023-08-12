@@ -1,6 +1,19 @@
 {
+  "name": "Social Networking API",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "seed": "node utils/seed"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "mongoose": "^7.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
