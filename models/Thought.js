@@ -27,6 +27,11 @@ thoughtSchema.methods.formatTimestamp = function () {
     const formattedDate = date.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric" });
     return formattedDate;
 }
+thoughtSchema
+    .virtual('reactionCount')
+    .get(function () {
+        return this.reactions.length
+});
 
 const Thought = model('thought', thoughtSchema);
 

@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const {Thought} = require('./Thought');
 
 const userSchema = new Schema(
     {
@@ -20,10 +21,26 @@ const userSchema = new Schema(
                 message: input => `${input} is not a valid email. Please enter valid entry.`
             }
         },
-        thoughts: [],
-        friends: []
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'thought',
+            },
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'user'
+            },
+        ]
     }
-)
+);
+
+userSchema
+    .virtual('friendCount')
+    .get(function () {
+        return this.friends.length
+});
 
 const User = model('user', userSchema);
 
