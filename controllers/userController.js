@@ -46,4 +46,18 @@ module.exports = {
 
     }
   },
+  async addAFriend (req,res) {
+    try {
+
+    } catch (err) {
+
+    }
+  },
+  async removeAFriend (req,res) {
+    try {
+
+    } catch (err) {
+
+    }
+  },
 };

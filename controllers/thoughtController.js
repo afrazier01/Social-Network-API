@@ -1,7 +1,7 @@
 const User = require('../models/Thought');
 
 module.exports = {
-  async getUsers(req, res) {
+  async getThoughts(req, res) {
     try {
       const users = await User.find();
       res.json(users);
@@ -9,7 +9,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  async getSingleUser(req, res) {
+  async getSingleThought(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
         .select('-__v');
@@ -24,7 +24,7 @@ module.exports = {
     }
   },
   // create a new user
-  async createUser(req, res) {
+  async createThought(req, res) {
     try {
       const dbUserData = await User.create(req.body);
       res.json(dbUserData);
@@ -32,14 +32,28 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  async updateUser(req,res) {
+  async updateThought (req,res) {
     try {
 
     } catch (err) {
 
     }
   },
-  async deleteUser (req,res) {
+  async deleteThought (req,res) {
+    try {
+
+    } catch (err) {
+
+    }
+  },
+  async createReaction (req,res) {
+    try {
+
+    } catch (err) {
+
+    }
+  },
+  async deleteReaction (req,res) {
     try {
 
     } catch (err) {
