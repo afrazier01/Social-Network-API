@@ -82,23 +82,25 @@ module.exports = {
 
       // thought.reactionId =  new mongoose.Types.ObjectId(); 
 
-      res.json(thought);
+      res.json(thought.reactions);
     } catch (err) {
       res.status(500).json(err);
     }
   },
   async deleteReaction (req,res) {
     try {
+      console.log(req.params.reactionId)
       const thought = await Thought.findOneAndUpdate(
         {_id: req.params.thoughtId},
-        { $pull: { reactions: { reactionId: req.params.reactionId } }},
-        { runValidators: false, new: true }
+        { $pull: { reactions: {_id: req.params.reactionId}}
+        },
+        { new: true }
       );
-
+      console.log(req.params.reactionId)
       if (!thought) {
         return res.status(404).json({ message: 'No thought with this id!' });
       }
-
+   
       res.json(thought);
     } catch (err) {
       res.status(500).json(err);
