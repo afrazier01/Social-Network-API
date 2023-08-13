@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const {reactionSchema} = require('./Reaction');
+const Reaction = require('./Reaction');
 
 const thoughtSchema = new Schema({
     thoughtText: {
@@ -17,12 +17,7 @@ const thoughtSchema = new Schema({
         ref: 'user',
         required: true,
     },
-    reactions: [
-        {
-            type: [reactionSchema],
-            required: false,
-        },
-    ],
+    reactions: [Reaction],
 });
 
 //Has to be called on each individual instance
