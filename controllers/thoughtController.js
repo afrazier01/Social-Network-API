@@ -80,8 +80,6 @@ module.exports = {
         });
       };
 
-      // thought.reactionId =  new mongoose.Types.ObjectId(); 
-
       res.json(thought.reactions);
     } catch (err) {
       res.status(500).json(err);
@@ -96,7 +94,7 @@ module.exports = {
         },
         { new: true }
       );
-      console.log(req.params.reactionId)
+      
       if (!thought) {
         return res.status(404).json({ message: 'No thought with this id!' });
       }

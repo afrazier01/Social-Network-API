@@ -22,12 +22,6 @@ const reactionSchema = new Schema(
             default: Date.now,
         },
     },
-    {
-        toJSON: {
-            getters: true,
-        },
-        id: false,
-    }
 );
 
 //Has to be called on each individual instance
