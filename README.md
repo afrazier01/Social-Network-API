@@ -5,7 +5,7 @@
 ## Description
 The challenge for this project was to build the back-end for an social networking program using the MongoDB database and Mongoose ODM. The application allows the user to hit endpoints to view/manipulate the data in a sample database.
 
-##### Take a look [here](https://drive.google.com/file/d/15UycRDBmTjAdSIVEmvT5h3KmpoKGxQKI/view) to see how the application works!
+##### Take a look [here](https://drive.google.com/file/d/13PvUud9hKdfeFnYbR76Xrfh6x8mAWhA0/view) to see how the application works!
 
 
 ## Table of Contents
@@ -24,7 +24,7 @@ Run the following command to get started:
 
 `node server.js` 
 
-    or
+or
 
 `npm start`
 
