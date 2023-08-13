@@ -1,49 +1,68 @@
-const User = require('../models/Thought');
+const Thought = require('../models/Thought');
 
 module.exports = {
   async getThoughts(req, res) {
     try {
-      const users = await User.find();
-      res.json(users);
+      const thoughts = await Thought.find();
+      res.json(thoughts);
     } catch (err) {
       res.status(500).json(err);
     }
   },
   async getSingleThought(req, res) {
     try {
-      const user = await User.findOne({ _id: req.params.userId })
+      const thought = await Thought.findOne({ _id: req.params.thoughtId })
         .select('-__v');
 
-      if (!user) {
-        return res.status(404).json({ message: 'No user with that ID' });
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought with that ID' });
       }
 
-      res.json(user);
+      res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
   },
-  // create a new user
+  // create a new though
   async createThought(req, res) {
     try {
-      const dbUserData = await User.create(req.body);
-      res.json(dbUserData);
+      const dbthoughtData = await Thought.create(req.body);
+      res.json(dbthoughtData);
     } catch (err) {
       res.status(500).json(err);
     }
   },
   async updateThought (req,res) {
     try {
+      const thought = await Thought.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        { $set: req.body },
+        { runValidators: true, new: true }
+      );
+
+      if (!thought) {
+        return res.status(404).json({
+          message: `No thought with that Id`,
+        });
+      };
+
+      res.json({message: 'thought successfully updated!'})
 
     } catch (err) {
-
+      res.status(500).json(err);
     }
   },
   async deleteThought (req,res) {
     try {
+      const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
 
+      if (!thought) {
+        return res.status(404).json({ message: 'No thought with that ID' });
+      }
+
+      res.json({ message: `thought deleted!`})
     } catch (err) {
-
+      res.status(500).json(err);
     }
   },
   async createReaction (req,res) {
